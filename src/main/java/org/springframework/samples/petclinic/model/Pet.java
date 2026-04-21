@@ -66,6 +66,12 @@ public class Pet extends NamedEntity {
     @Column(name = "microchip_id", unique = true)
     private String microchipId;
 
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "breed")
+    private String breed;
+
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
@@ -105,6 +111,22 @@ public class Pet extends NamedEntity {
 
     public void setMicrochipId(String microchipId) {
         this.microchipId = microchipId;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getBreed() {
+        return this.breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
     }
 
     protected Set<Visit> getVisitsInternal() {
