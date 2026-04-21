@@ -28,6 +28,7 @@
                 </div>
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Birth Date" name="birthDate"/>
+                <petclinic:inputField label="Photo URL" name="photoUrl"/>
                 <div class="control-group">
                     <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
                 </div>
