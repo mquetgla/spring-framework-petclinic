@@ -30,6 +30,8 @@
                 <petclinic:inputField label="Birth Date" name="birthDate"/>
                 <petclinic:inputField label="Photo URL" name="photoUrl"/>
                 <petclinic:inputField label="Microchip ID" name="microchipId"/>
+                <petclinic:inputField label="Color" name="color"/>
+                <petclinic:inputField label="Breed" name="breed"/>
                 <div class="control-group">
                     <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
                 </div>
