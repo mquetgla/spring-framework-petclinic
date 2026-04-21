@@ -36,6 +36,7 @@ class JdbcPetRowMapper implements RowMapper<JdbcPet> {
         pet.setTypeId(rs.getInt("type_id"));
         pet.setOwnerId(rs.getInt("owner_id"));
         pet.setPhotoUrl(rs.getString("photo_url"));
+        pet.setMicrochipId(rs.getString("microchip_id"));
         return pet;
     }
 }
