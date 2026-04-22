@@ -14,4 +14,13 @@
         <property name="proxyInterfaces" value="org.springframework.samples.petclinic.service.ClinicService"/>
     </bean>
 
+    <bean id="petPhotoService" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <property name="target">
+            <bean class="org.mockito.Mockito" factory-method="mock">
+                <constructor-arg type="java.lang.Class"  value="org.springframework.samples.petclinic.service.PetPhotoService" />
+            </bean>
+        </property>
+        <property name="proxyInterfaces" value="org.springframework.samples.petclinic.service.PetPhotoService"/>
+    </bean>
+
 </beans>

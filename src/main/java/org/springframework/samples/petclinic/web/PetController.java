@@ -40,6 +40,7 @@ import java.util.Collection;
 public class PetController {
 
     private static final String VIEWS_PETS_CREATE_OR_UPDATE_FORM = "pets/createOrUpdatePetForm";
+    private static final String VIEWS_PETS_UPLOAD_PHOTO = "pets/uploadPhoto";
     private final ClinicService clinicService;
 
     public PetController(ClinicService clinicService) {
@@ -106,6 +107,13 @@ public class PetController {
         owner.addPet(pet);
         this.clinicService.savePet(pet);
         return "redirect:/owners/{ownerId}";
+    }
+
+    @GetMapping(value = "/pets/{petId}/photo")
+    public String initUploadPhotoForm(@PathVariable("ownerId") int ownerId, @PathVariable("petId") int petId, ModelMap model) {
+        Pet pet = this.clinicService.findPetById(petId);
+        model.put("pet", pet);
+        return VIEWS_PETS_UPLOAD_PHOTO;
     }
 
 }
