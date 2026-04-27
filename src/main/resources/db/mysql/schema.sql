@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS pets (
   microchip_id VARCHAR(255) UNIQUE,
   color VARCHAR(30),
   breed VARCHAR(50),
+  active BOOLEAN DEFAULT TRUE,
   INDEX(name),
   FOREIGN KEY (owner_id) REFERENCES owners(id),
   FOREIGN KEY (type_id) REFERENCES types(id)
