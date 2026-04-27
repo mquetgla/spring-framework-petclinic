@@ -72,6 +72,9 @@ public class Pet extends NamedEntity {
     @Column(name = "breed")
     private String breed;
 
+    @Column(name = "active")
+    private Boolean active = true;
+
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
@@ -127,6 +130,14 @@ public class Pet extends NamedEntity {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     protected Set<Visit> getVisitsInternal() {

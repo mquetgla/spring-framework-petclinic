@@ -49,7 +49,16 @@
                 <th scope="col">
                     <dl class="dl-horizontal">
                         <dt>Name</dt>
-                        <dd><c:out value="${pet.name}"/></dd>
+                        <dd><c:choose>
+                                <c:when test="${not pet.active}">
+                                    <del><c:out value="${pet.name}"/></del>
+                                    <span class="label label-warning">Inactive</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:out value="${pet.name}"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </dd>
                         <dt>Birth Date</dt>
                         <dd><petclinic:localDate date="${pet.birthDate}" pattern="yyyy-MM-dd"/></dd>
                         <dt>Type</dt>

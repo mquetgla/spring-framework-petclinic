@@ -33,6 +33,14 @@
                 <petclinic:inputField label="Color" name="color"/>
                 <petclinic:inputField label="Breed" name="breed"/>
                 <div class="control-group">
+                    <label class="col-sm-2 control-label">Active</label>
+                    <div class="col-sm-10">
+                        <form:checkbox path="active" class="form-check-input"/>
+                        <form:errors path="active" cssClass="help-inline"/>
+                        <span class="help-inline">Mark as inactive if pet is deceased or transferred</span>
+                    </div>
+                </div>
+                <div class="control-group">
                     <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
                 </div>
             </div>
