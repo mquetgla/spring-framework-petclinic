@@ -1,0 +1,7 @@
+{
+  "inputs": {
+    "spec": "A\u00f1adir campo active boolean a Pet",
+    "integration": "opencode",
+    "scope": "full"
+  }
+}

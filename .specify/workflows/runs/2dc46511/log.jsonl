@@ -1,0 +1,4 @@
+{"event": "step_started", "step_id": "specify", "type": "command", "timestamp": "2026-04-27T07:16:19.836170+00:00"}
+{"event": "step_completed", "step_id": "specify", "status": "failed", "timestamp": "2026-04-27T07:16:21.637837+00:00"}
+{"event": "step_failed", "step_id": "specify", "error": "Command exited with code 1", "timestamp": "2026-04-27T07:16:21.662718+00:00"}
+{"event": "workflow_finished", "status": "failed", "timestamp": "2026-04-27T07:16:21.698640+00:00"}
