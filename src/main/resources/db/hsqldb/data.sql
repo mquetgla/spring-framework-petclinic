@@ -33,8 +33,8 @@ INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '
 INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435');
 INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487');
 
-INSERT INTO pets VALUES (1, 'Leo', '2010-09-07', 1, 1, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO pets VALUES (2, 'Basil', '2012-08-06', 6, 2, NULL, NULL, NULL, NULL, TRUE);
+INSERT INTO pets VALUES (1, 'Leo', '2010-09-07', 1, 1, NULL, 'ABC123', 'Orange', 'Tabby', TRUE);
+INSERT INTO pets VALUES (2, 'Basil', '2012-08-06', 6, 2, NULL, 'XYZ789', 'Brown', 'Golden Hamster', TRUE);
 INSERT INTO pets VALUES (3, 'Rosy', '2011-04-17', 2, 3, NULL, NULL, NULL, NULL, TRUE);
 INSERT INTO pets VALUES (4, 'Jewel', '2010-03-07', 2, 3, NULL, NULL, NULL, NULL, TRUE);
 INSERT INTO pets VALUES (5, 'Iggy', '2010-11-30', 3, 4, NULL, NULL, NULL, NULL, TRUE);

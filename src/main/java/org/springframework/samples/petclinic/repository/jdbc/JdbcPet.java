@@ -33,6 +33,8 @@ class JdbcPet extends Pet {
 
     private String breed;
 
+    private String microchip;
+
     public int getTypeId() {
         return this.typeId;
     }
@@ -63,6 +65,14 @@ class JdbcPet extends Pet {
 
     public void setBreed(String breed) {
         this.breed = breed;
+    }
+
+    public String getMicrochip() {
+        return this.microchip;
+    }
+
+    public void setMicrochip(String microchip) {
+        this.microchip = microchip;
     }
 
 }
