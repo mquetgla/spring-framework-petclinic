@@ -33,11 +33,11 @@ INSERT INTO owners VALUES (default, 'Maria', 'Escobito', '345 Maple St.', 'Madis
 INSERT INTO owners VALUES (default, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435');
 INSERT INTO owners VALUES (default, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487');
 
-INSERT INTO pets VALUES (default, 'Leo', '2010-09-07', 1, 1, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO pets VALUES (default, 'Basil', '2012-08-06', 6, 2, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO pets VALUES (default, 'Rosy', '2011-04-17', 2, 3, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO pets VALUES (default, 'Jewel', '2010-03-07', 2, 3, NULL, NULL, NULL, NULL, TRUE);
-INSERT INTO pets VALUES (default, 'Iggy', '2010-11-30', 3, 4, NULL, NULL, NULL, NULL, TRUE);
+INSERT INTO pets VALUES (default, 'Leo', '2010-09-07', 1, 1, NULL, '985141001234567', 'Orange', 'Tabby', TRUE);
+INSERT INTO pets VALUES (default, 'Basil', '2012-08-06', 6, 2, NULL, '985141001234568', 'Brown', 'Golden Hamster', TRUE);
+INSERT INTO pets VALUES (default, 'Rosy', '2011-04-17', 2, 3, NULL, '985141001234569', NULL, NULL, TRUE);
+INSERT INTO pets VALUES (default, 'Jewel', '2010-03-07', 2, 3, NULL, '985141001234570', NULL, NULL, TRUE);
+INSERT INTO pets VALUES (default, 'Iggy', '2010-11-30', 3, 4, NULL, '985141001234571', NULL, NULL, TRUE);
 INSERT INTO pets VALUES (default, 'George', '2010-01-20', 4, 5, NULL, NULL, NULL, NULL, TRUE);
 INSERT INTO pets VALUES (default, 'Samantha', '2012-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE);
 INSERT INTO pets VALUES (default, 'Max', '2012-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE);
