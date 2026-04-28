@@ -94,7 +94,7 @@ public class JdbcPetRepositoryImpl implements PetRepository {
             this.jdbcClient
                 .sql("""
                     UPDATE pets
-                    SET name=:name, birth_date=:birth_date, type_id=:type_id, owner_id=:owner_id, photo_url=:photo_url, microchip_id=:microchip_id, color=:color, breed=:breed
+                    SET name=:name, birth_date=:birth_date, type_id=:type_id, owner_id=:owner_id, photo_url=:photo_url, microchip_id=:microchip_id, color=:color, breed=:breed, active=:active
                     WHERE id=:id
                     """)
                 .paramSource(createPetParameterSource(pet))
@@ -113,9 +113,10 @@ public class JdbcPetRepositoryImpl implements PetRepository {
             .addValue("type_id", pet.getType().getId())
             .addValue("owner_id", pet.getOwner().getId())
             .addValue("photo_url", pet.getPhotoUrl())
-            .addValue("microchip_id", pet.getMicrochipId())
+            .addValue("microchip_id", pet.getMicrochip())
             .addValue("color", pet.getColor())
-            .addValue("breed", pet.getBreed());
+            .addValue("breed", pet.getBreed())
+            .addValue("active", pet.getActive());
     }
 
 }

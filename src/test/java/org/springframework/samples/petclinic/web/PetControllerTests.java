@@ -117,4 +117,40 @@ class PetControllerTests {
             .andExpect(view().name("pets/createOrUpdatePetForm"));
     }
 
+    @Test
+    void testProcessCreationFormWithActiveTrue() throws Exception {
+        mockMvc.perform(post("/owners/{ownerId}/pets/new", TEST_OWNER_ID)
+            .param("name", "Betty")
+            .param("type", "hamster")
+            .param("birthDate", "2015/02/12")
+            .param("active", "true")
+        )
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/owners/{ownerId}"));
+    }
+
+    @Test
+    void testProcessCreationFormWithActiveFalse() throws Exception {
+        mockMvc.perform(post("/owners/{ownerId}/pets/new", TEST_OWNER_ID)
+            .param("name", "Betty")
+            .param("type", "hamster")
+            .param("birthDate", "2015/02/12")
+            .param("active", "false")
+        )
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/owners/{ownerId}"));
+    }
+
+    @Test
+    void testProcessUpdateFormWithActive() throws Exception {
+        mockMvc.perform(post("/owners/{ownerId}/pets/{petId}/edit", TEST_OWNER_ID, TEST_PET_ID)
+            .param("name", "Betty")
+            .param("type", "hamster")
+            .param("birthDate", "2015/02/12")
+            .param("active", "false")
+        )
+            .andExpect(status().is3xxRedirection())
+            .andExpect(view().name("redirect:/owners/{ownerId}"));
+    }
+
 }

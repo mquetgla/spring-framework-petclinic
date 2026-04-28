@@ -64,7 +64,7 @@ public class Pet extends NamedEntity {
     private String photoUrl;
 
     @Column(name = "microchip_id", unique = true)
-    private String microchipId;
+    private String microchip;
 
     @Column(name = "color")
     private String color;
@@ -108,12 +108,12 @@ public class Pet extends NamedEntity {
         this.photoUrl = photoUrl;
     }
 
-    public String getMicrochipId() {
-        return this.microchipId;
+    public String getMicrochip() {
+        return this.microchip;
     }
 
-    public void setMicrochipId(String microchipId) {
-        this.microchipId = microchipId;
+    public void setMicrochip(String microchip) {
+        this.microchip = microchip;
     }
 
     public String getColor() {
