@@ -72,12 +72,12 @@
                                 <c:out value="-"/>
                             </c:if>
                         </dd>
-                        <dt>Microchip ID</dt>
+                        <dt>Microchip</dt>
                         <dd>
-                            <c:if test="${not empty pet.microchipId}">
-                                <c:out value="${pet.microchipId}"/>
+                            <c:if test="${not empty pet.microchip}">
+                                <c:out value="${pet.microchip}"/>
                             </c:if>
-                            <c:if test="${empty pet.microchipId}">
+                            <c:if test="${empty pet.microchip}">
                                 <c:out value="-"/>
                             </c:if>
                         </dd>

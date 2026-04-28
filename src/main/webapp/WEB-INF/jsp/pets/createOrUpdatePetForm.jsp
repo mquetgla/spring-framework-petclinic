@@ -29,12 +29,13 @@
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Birth Date" name="birthDate"/>
                 <petclinic:inputField label="Photo URL" name="photoUrl"/>
-                <petclinic:inputField label="Microchip ID" name="microchipId"/>
+                <petclinic:inputField label="Microchip" name="microchip"/>
                 <petclinic:inputField label="Color" name="color"/>
                 <petclinic:inputField label="Breed" name="breed"/>
                 <div class="control-group">
                     <label class="col-sm-2 control-label">Active</label>
                     <div class="col-sm-10">
+                        <form:hidden path="active" value="false"/>
                         <form:checkbox path="active" class="form-check-input"/>
                         <form:errors path="active" cssClass="help-inline"/>
                         <span class="help-inline">Mark as inactive if pet is deceased or transferred</span>

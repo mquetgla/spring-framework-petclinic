@@ -78,7 +78,7 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
     @Override
     public List<Visit> findByPetId(Integer petId) {
         JdbcPet pet = this.jdbcClient
-            .sql("SELECT id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed FROM pets WHERE id=:id")
+            .sql("SELECT id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active FROM pets WHERE id=:id")
             .param("id", petId)
             .query(new JdbcPetRowMapper())
             .single();

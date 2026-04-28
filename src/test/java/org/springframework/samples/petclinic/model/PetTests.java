@@ -77,4 +77,30 @@ class PetTests {
 
         assertEquals(pet.getId(), visit.getPet().getId());
     }
+
+    @Test
+    void activeField_shouldDefaultToTrue() {
+        Pet newPet = new Pet();
+        
+        assertNotNull(newPet.getActive());
+        assertTrue(newPet.getActive());
+    }
+
+    @Test
+    void activeField_shouldBeSettable() {
+        pet.setActive(false);
+        
+        assertFalse(pet.getActive());
+        
+        pet.setActive(true);
+        
+        assertTrue(pet.getActive());
+    }
+
+    @Test
+    void activeField_shouldAllowNull() {
+        pet.setActive(null);
+        
+        assertNull(pet.getActive());
+    }
 }
