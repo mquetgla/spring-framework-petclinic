@@ -28,6 +28,38 @@
                 </div>
                 <petclinic:inputField label="Name" name="name"/>
                 <petclinic:inputField label="Birth Date" name="birthDate"/>
+                <petclinic:inputField label="Photo URL" name="photoUrl"/>
+                <petclinic:inputField label="Microchip" name="microchip"/>
+                <petclinic:inputField label="Color" name="color"/>
+                <petclinic:inputField label="Breed" name="breed"/>
+                <petclinic:inputField label="Weight (kg)" name="weight"/>
+                <div class="control-group">
+                    <label class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                        <form:select path="gender" class="form-control">
+                            <form:option value="UNKNOWN">Unknown</form:option>
+                            <form:option value="MALE">Male</form:option>
+                            <form:option value="FEMALE">Female</form:option>
+                        </form:select>
+                        <form:errors path="gender" cssClass="help-inline"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="col-sm-2 control-label">Notes</label>
+                    <div class="col-sm-10">
+                        <form:textarea path="notes" rows="3" class="form-control"/>
+                        <form:errors path="notes" cssClass="help-inline"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="col-sm-2 control-label">Active</label>
+                    <div class="col-sm-10">
+                        <form:hidden path="active" value="false"/>
+                        <form:checkbox path="active" class="form-check-input"/>
+                        <form:errors path="active" cssClass="help-inline"/>
+                        <span class="help-inline">Mark as inactive if pet is deceased or transferred</span>
+                    </div>
+                </div>
                 <div class="control-group">
                     <petclinic:selectField name="type" label="Type " names="${types}" size="5"/>
                 </div>

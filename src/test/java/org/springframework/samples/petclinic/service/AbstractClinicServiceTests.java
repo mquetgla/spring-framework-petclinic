@@ -199,5 +199,27 @@ abstract class AbstractClinicServiceTests {
         assertThat(visitArr[0].getPet().getId()).isEqualTo(7);
     }
 
+    @Test
+    @Transactional
+    public void shouldPersistActiveFieldWhenSavingPet() {
+        Owner owner6 = this.clinicService.findOwnerById(6);
+        Pet pet = new Pet();
+        pet.setName("activeTestPet");
+        Collection<PetType> types = this.clinicService.findPetTypes();
+        pet.setType(EntityUtils.getById(types, PetType.class, 1));
+        pet.setBirthDate(LocalDate.now());
+        pet.setActive(false);
+        owner6.addPet(pet);
+        this.clinicService.savePet(pet);
+
+        Pet savedPet = this.clinicService.findPetById(pet.getId());
+        assertThat(savedPet.getActive()).isFalse();
+
+        savedPet.setActive(true);
+        this.clinicService.savePet(savedPet);
+        Pet updatedPet = this.clinicService.findPetById(savedPet.getId());
+        assertThat(updatedPet.getActive()).isTrue();
+    }
+
 
 }

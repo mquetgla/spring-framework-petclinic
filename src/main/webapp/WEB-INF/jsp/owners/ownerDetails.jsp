@@ -49,11 +49,48 @@
                 <th scope="col">
                     <dl class="dl-horizontal">
                         <dt>Name</dt>
-                        <dd><c:out value="${pet.name}"/></dd>
+                        <dd><c:choose>
+                                <c:when test="${not pet.active}">
+                                    <del><c:out value="${pet.name}"/></del>
+                                    <span class="label label-warning">Inactive</span>
+                                </c:when>
+                                <c:otherwise>
+                                    <c:out value="${pet.name}"/>
+                                </c:otherwise>
+                            </c:choose>
+                        </dd>
                         <dt>Birth Date</dt>
                         <dd><petclinic:localDate date="${pet.birthDate}" pattern="yyyy-MM-dd"/></dd>
                         <dt>Type</dt>
                         <dd><c:out value="${pet.type.name}"/></dd>
+                        <dt>Photo</dt>
+                        <dd>
+                            <c:if test="${not empty pet.photoUrl}">
+                                <img src="${pet.photoUrl}" alt="${pet.name}" style="max-width: 100px; max-height: 100px;"/>
+                            </c:if>
+                            <c:if test="${empty pet.photoUrl}">
+                                <c:out value="-"/>
+                            </c:if>
+                        </dd>
+                        <dt>Microchip</dt>
+                        <dd>
+                            <c:if test="${not empty pet.microchip}">
+                                <c:out value="${pet.microchip}"/>
+                            </c:if>
+                            <c:if test="${empty pet.microchip}">
+                                <c:out value="-"/>
+                            </c:if>
+                        </dd>
+                        <dt>Gender</dt>
+                        <dd><c:out value="${pet.gender != null ? pet.gender : 'UNKNOWN'}"/></dd>
+                        <dt>Color</dt>
+                        <dd><c:out value="${not empty pet.color ? pet.color : '-'}"/></dd>
+                        <dt>Breed</dt>
+                        <dd><c:out value="${not empty pet.breed ? pet.breed : '-'}"/></dd>
+                        <dt>Weight</dt>
+                        <dd><c:out value="${pet.weight != null ? pet.weight : '-'}"/></dd>
+                        <dt>Notes</dt>
+                        <dd><c:out value="${not empty pet.notes ? pet.notes : '-'}"/></dd>
                     </dl>
                 </th>
                 <td>

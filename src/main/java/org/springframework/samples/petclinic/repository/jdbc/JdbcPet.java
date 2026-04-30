@@ -29,6 +29,12 @@ class JdbcPet extends Pet {
 
     private int ownerId;
 
+    private String color;
+
+    private String breed;
+
+    private String microchip;
+
     public int getTypeId() {
         return this.typeId;
     }
@@ -43,6 +49,30 @@ class JdbcPet extends Pet {
 
     public void setOwnerId(int ownerId) {
         this.ownerId = ownerId;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getBreed() {
+        return this.breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public String getMicrochip() {
+        return this.microchip;
+    }
+
+    public void setMicrochip(String microchip) {
+        this.microchip = microchip;
     }
 
 }

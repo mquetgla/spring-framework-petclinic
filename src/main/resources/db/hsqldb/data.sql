@@ -33,19 +33,19 @@ INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '
 INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435');
 INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487');
 
-INSERT INTO pets VALUES (1, 'Leo', '2010-09-07', 1, 1);
-INSERT INTO pets VALUES (2, 'Basil', '2012-08-06', 6, 2);
-INSERT INTO pets VALUES (3, 'Rosy', '2011-04-17', 2, 3);
-INSERT INTO pets VALUES (4, 'Jewel', '2010-03-07', 2, 3);
-INSERT INTO pets VALUES (5, 'Iggy', '2010-11-30', 3, 4);
-INSERT INTO pets VALUES (6, 'George', '2010-01-20', 4, 5);
-INSERT INTO pets VALUES (7, 'Samantha', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (8, 'Max', '2012-09-04', 1, 6);
-INSERT INTO pets VALUES (9, 'Lucky', '2011-08-06', 5, 7);
-INSERT INTO pets VALUES (10, 'Mulligan', '2007-02-24', 2, 8);
-INSERT INTO pets VALUES (11, 'Freddy', '2010-03-09', 5, 9);
-INSERT INTO pets VALUES (12, 'Lucky', '2010-06-24', 2, 10);
-INSERT INTO pets VALUES (13, 'Sly', '2012-06-08', 1, 10);
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (1, 'Leo', '2010-09-07', 1, 1, NULL, 'ABC123', 'Orange', 'Tabby', TRUE, 4.50, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (2, 'Basil', '2012-08-06', 6, 2, NULL, 'XYZ789', 'Brown', 'Golden Hamster', TRUE, 0.15, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (3, 'Rosy', '2011-04-17', 2, 3, NULL, NULL, NULL, NULL, TRUE, 8.20, NULL, 'FEMALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (4, 'Jewel', '2010-03-07', 2, 3, NULL, NULL, NULL, NULL, TRUE, 5.00, NULL, 'FEMALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (5, 'Iggy', '2010-11-30', 3, 4, NULL, NULL, NULL, NULL, TRUE, 1.20, NULL, 'UNKNOWN');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (6, 'George', '2010-01-20', 4, 5, NULL, NULL, NULL, NULL, TRUE, 2.50, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (7, 'Samantha', '2012-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE, 3.80, NULL, 'FEMALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (8, 'Max', '2012-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE, 4.00, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (9, 'Lucky', '2011-08-06', 5, 7, NULL, NULL, NULL, NULL, TRUE, 0.50, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (10, 'Mulligan', '2007-02-24', 2, 8, NULL, NULL, NULL, NULL, TRUE, 12.00, NULL, 'MALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (11, 'Freddy', '2010-03-09', 5, 9, NULL, NULL, NULL, NULL, TRUE, 0.30, NULL, 'UNKNOWN');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (12, 'Lucky', '2010-06-24', 2, 10, NULL, NULL, NULL, NULL, TRUE, 7.50, NULL, 'FEMALE');
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (13, 'Sly', '2012-06-08', 1, 10, NULL, NULL, NULL, NULL, TRUE, 3.50, NULL, 'MALE');
 
 INSERT INTO visits VALUES (1, 7, '2013-01-01', 'rabies shot');
 INSERT INTO visits VALUES (2, 8, '2013-01-02', 'rabies shot');

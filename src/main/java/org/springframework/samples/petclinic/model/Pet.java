@@ -20,12 +20,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -60,6 +65,33 @@ public class Pet extends NamedEntity {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
     private Set<Visit> visits;
 
+    @Column(name = "photo_url")
+    private String photoUrl;
+
+    @Column(name = "microchip_id", unique = true)
+    private String microchip;
+
+    @Column(name = "color")
+    private String color;
+
+    @Column(name = "breed")
+    private String breed;
+
+	@Column(name = "active")
+	private Boolean active = true;
+
+	@Column(name = "weight", precision = 5, scale = 2)
+	@DecimalMin(value = "0.01", message = "Weight must be a positive number")
+	private BigDecimal weight;
+
+	@Lob
+	@Column(name = "notes")
+	private String notes;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "gender")
+	private Gender gender = Gender.UNKNOWN;
+
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
@@ -85,7 +117,71 @@ public class Pet extends NamedEntity {
         this.owner = owner;
     }
 
-    protected Set<Visit> getVisitsInternal() {
+    public String getPhotoUrl() {
+        return this.photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
+    }
+
+    public String getMicrochip() {
+        return this.microchip;
+    }
+
+    public void setMicrochip(String microchip) {
+        this.microchip = microchip;
+    }
+
+    public String getColor() {
+        return this.color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getBreed() {
+        return this.breed;
+    }
+
+    public void setBreed(String breed) {
+        this.breed = breed;
+    }
+
+    public Boolean getActive() {
+        return this.active;
+    }
+
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
+
+	public BigDecimal getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(BigDecimal weight) {
+		this.weight = weight;
+	}
+
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public Gender getGender() {
+		return this.gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	protected Set<Visit> getVisitsInternal() {
         if (this.visits == null) {
             this.visits = new HashSet<>();
         }
