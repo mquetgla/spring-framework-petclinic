@@ -33,19 +33,19 @@ INSERT INTO owners VALUES (8, 'Maria', 'Escobito', '345 Maple St.', 'Madison', '
 INSERT INTO owners VALUES (9, 'David', 'Schroeder', '2749 Blackhawk Trail', 'Madison', '6085559435') ON CONFLICT DO NOTHING;
 INSERT INTO owners VALUES (10, 'Carlos', 'Estaban', '2335 Independence La.', 'Waunakee', '6085555487') ON CONFLICT DO NOTHING;
 
-INSERT INTO pets VALUES (1, 'Leo', '2000-09-07', 1, 1, NULL, '985141001234567', 'Orange', 'Tabby', TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (2, 'Basil', '2002-08-06', 6, 2, NULL, '985141001234568', 'Brown', 'Golden Hamster', TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (3, 'Rosy', '2001-04-17', 2, 3, NULL, '985141001234569', NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (4, 'Jewel', '2000-03-07', 2, 3, NULL, '985141001234570', NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (5, 'Iggy', '2000-11-30', 3, 4, NULL, '985141001234571', NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (6, 'George', '2000-01-20', 4, 5, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (7, 'Samantha', '1995-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (8, 'Max', '1995-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (9, 'Lucky', '1999-08-06', 5, 7, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (10, 'Mulligan', '1997-02-24', 2, 8, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (11, 'Freddy', '2000-03-09', 5, 9, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (12, 'Lucky', '2000-06-24', 2, 10, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
-INSERT INTO pets VALUES (13, 'Sly', '2002-06-08', 1, 10, NULL, NULL, NULL, NULL, TRUE) ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (1, 'Leo', '2000-09-07', 1, 1, NULL, '985141001234567', 'Orange', 'Tabby', TRUE, 4.50, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (2, 'Basil', '2002-08-06', 6, 2, NULL, '985141001234568', 'Brown', 'Golden Hamster', TRUE, 0.15, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (3, 'Rosy', '2001-04-17', 2, 3, NULL, '985141001234569', NULL, NULL, TRUE, 8.20, NULL, 'FEMALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (4, 'Jewel', '2000-03-07', 2, 3, NULL, '985141001234570', NULL, NULL, TRUE, 5.00, NULL, 'FEMALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (5, 'Iggy', '2000-11-30', 3, 4, NULL, '985141001234571', NULL, NULL, TRUE, 1.20, NULL, 'UNKNOWN') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (6, 'George', '2000-01-20', 4, 5, NULL, NULL, NULL, NULL, TRUE, 2.50, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (7, 'Samantha', '1995-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE, 3.80, NULL, 'FEMALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (8, 'Max', '1995-09-04', 1, 6, NULL, NULL, NULL, NULL, TRUE, 4.00, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (9, 'Lucky', '1999-08-06', 5, 7, NULL, NULL, NULL, NULL, TRUE, 0.50, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (10, 'Mulligan', '1997-02-24', 2, 8, NULL, NULL, NULL, NULL, TRUE, 12.00, NULL, 'MALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (11, 'Freddy', '2000-03-09', 5, 9, NULL, NULL, NULL, NULL, TRUE, 0.30, NULL, 'UNKNOWN') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (12, 'Lucky', '2000-06-24', 2, 10, NULL, NULL, NULL, NULL, TRUE, 7.50, NULL, 'FEMALE') ON CONFLICT DO NOTHING;
+INSERT INTO pets (id, name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES (13, 'Sly', '2002-06-08', 1, 10, NULL, NULL, NULL, NULL, TRUE, 3.50, NULL, 'MALE') ON CONFLICT DO NOTHING;
 
 INSERT INTO visits VALUES (1, 7, '2010-03-04', 'rabies shot') ON CONFLICT DO NOTHING;
 INSERT INTO visits VALUES (2, 8, '2011-03-04', 'rabies shot') ON CONFLICT DO NOTHING;

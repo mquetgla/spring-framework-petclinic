@@ -20,12 +20,17 @@ import org.springframework.format.annotation.DateTimeFormat;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.DecimalMin;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -72,8 +77,20 @@ public class Pet extends NamedEntity {
     @Column(name = "breed")
     private String breed;
 
-    @Column(name = "active")
-    private Boolean active = true;
+	@Column(name = "active")
+	private Boolean active = true;
+
+	@Column(name = "weight", precision = 5, scale = 2)
+	@DecimalMin(value = "0.01", message = "Weight must be a positive number")
+	private BigDecimal weight;
+
+	@Lob
+	@Column(name = "notes")
+	private String notes;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name = "gender")
+	private Gender gender = Gender.UNKNOWN;
 
 
     public void setBirthDate(LocalDate birthDate) {
@@ -136,11 +153,35 @@ public class Pet extends NamedEntity {
         return this.active;
     }
 
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 
-    protected Set<Visit> getVisitsInternal() {
+	public BigDecimal getWeight() {
+		return this.weight;
+	}
+
+	public void setWeight(BigDecimal weight) {
+		this.weight = weight;
+	}
+
+	public String getNotes() {
+		return this.notes;
+	}
+
+	public void setNotes(String notes) {
+		this.notes = notes;
+	}
+
+	public Gender getGender() {
+		return this.gender;
+	}
+
+	public void setGender(Gender gender) {
+		this.gender = gender;
+	}
+
+	protected Set<Visit> getVisitsInternal() {
         if (this.visits == null) {
             this.visits = new HashSet<>();
         }

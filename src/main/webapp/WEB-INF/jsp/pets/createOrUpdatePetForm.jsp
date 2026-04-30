@@ -32,6 +32,25 @@
                 <petclinic:inputField label="Microchip" name="microchip"/>
                 <petclinic:inputField label="Color" name="color"/>
                 <petclinic:inputField label="Breed" name="breed"/>
+                <petclinic:inputField label="Weight (kg)" name="weight"/>
+                <div class="control-group">
+                    <label class="col-sm-2 control-label">Gender</label>
+                    <div class="col-sm-10">
+                        <form:select path="gender" class="form-control">
+                            <form:option value="UNKNOWN">Unknown</form:option>
+                            <form:option value="MALE">Male</form:option>
+                            <form:option value="FEMALE">Female</form:option>
+                        </form:select>
+                        <form:errors path="gender" cssClass="help-inline"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="col-sm-2 control-label">Notes</label>
+                    <div class="col-sm-10">
+                        <form:textarea path="notes" rows="3" class="form-control"/>
+                        <form:errors path="notes" cssClass="help-inline"/>
+                    </div>
+                </div>
                 <div class="control-group">
                     <label class="col-sm-2 control-label">Active</label>
                     <div class="col-sm-10">

@@ -81,6 +81,16 @@
                                 <c:out value="-"/>
                             </c:if>
                         </dd>
+                        <dt>Gender</dt>
+                        <dd><c:out value="${pet.gender != null ? pet.gender : 'UNKNOWN'}"/></dd>
+                        <dt>Color</dt>
+                        <dd><c:out value="${not empty pet.color ? pet.color : '-'}"/></dd>
+                        <dt>Breed</dt>
+                        <dd><c:out value="${not empty pet.breed ? pet.breed : '-'}"/></dd>
+                        <dt>Weight</dt>
+                        <dd><c:out value="${pet.weight != null ? pet.weight : '-'}"/></dd>
+                        <dt>Notes</dt>
+                        <dd><c:out value="${not empty pet.notes ? pet.notes : '-'}"/></dd>
                     </dl>
                 </th>
                 <td>

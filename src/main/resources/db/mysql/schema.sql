@@ -52,6 +52,9 @@ CREATE TABLE IF NOT EXISTS pets (
   color VARCHAR(30),
   breed VARCHAR(50),
   active BOOLEAN DEFAULT TRUE,
+  weight DECIMAL(5,2),
+  notes TEXT,
+  gender VARCHAR(20) DEFAULT 'UNKNOWN',
   INDEX(name),
   FOREIGN KEY (owner_id) REFERENCES owners(id),
   FOREIGN KEY (type_id) REFERENCES types(id)
