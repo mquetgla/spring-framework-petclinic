@@ -38,6 +38,18 @@
             <div class="form-group has-feedback">
                 <petclinic:inputField label="Date" name="date"/>
                 <petclinic:inputField label="Description" name="description"/>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Vet</label>
+                    <div class="col-sm-10">
+                        <select name="vetId" class="form-control">
+                            <option value="">-- None --</option>
+                            <c:forEach var="v" items="${vets}">
+                                <option value="${v.id}"><c:out value="${v.firstName} ${v.lastName}"/></option>
+                            </c:forEach>
+                        </select>
+                        </form:select>
+                    </div>
+                </div>
             </div>
 
             <div class="form-group">

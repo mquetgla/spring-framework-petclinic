@@ -99,12 +99,19 @@
                         <tr>
                             <th id="visitDate">Visit Date</th>
                             <th id="visitDescription">Description</th>
+                            <th id="visitVet">Vet</th>
                         </tr>
                         </thead>
                         <c:forEach var="visit" items="${pet.visits}">
                             <tr>
                                 <td headers="visitDate"><petclinic:localDate date="${visit.date}" pattern="yyyy-MM-dd"/></td>
                                 <td headers="visitDescription"><c:out value="${visit.description}"/></td>
+                                <td headers="visitVet">
+                                    <c:if test="${visit.vet != null}">
+                                        <c:out value="${visit.vet.firstName} ${visit.vet.lastName}"/>
+                                    </c:if>
+                                    <c:if test="${visit.vet == null}">-</c:if>
+                                </td>
                             </tr>
                         </c:forEach>
                         <tr>
@@ -122,12 +129,69 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(visitUrl)}">Add Visit</a>
                             </td>
+                            <td>
+                                <spring:url value="/owners/{ownerId}/pets/{petId}/weightRecords/new" var="weightUrl">
+                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                    <spring:param name="petId" value="${pet.id}"/>
+                                </spring:url>
+                                <a href="${fn:escapeXml(weightUrl)}">Add Weight Record</a>
+                            </td>
                         </tr>
                     </table>
+
+                    <c:if test="${not empty pet.weightRecords}">
+                        <h4>Weight History</h4>
+                        <table class="table-condensed" aria-describedby="petsAndVisits">
+                            <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Weight (kg)</th>
+                            </tr>
+                            </thead>
+                            <c:forEach var="wr" items="${pet.weightRecords}">
+                                <tr>
+                                    <td><petclinic:localDate date="${wr.measureDate}" pattern="yyyy-MM-dd"/></td>
+                                    <td><c:out value="${wr.weight}"/></td>
+                                </tr>
+                            </c:forEach>
+                        </table>
+                        <canvas id="weightChart${pet.id}" width="400" height="200"></canvas>
+                    </c:if>
                 </td>
             </tr>
 
         </c:forEach>
     </table>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script>
+        <c:forEach var="pet" items="${owner.pets}">
+            <c:if test="${not empty pet.weightRecords}">
+                (function() {
+                    var labels = [<c:forEach var="wr" items="${pet.weightRecords}" varStatus="s">'${wr.measureDate}'<c:if test="${!s.last}">,</c:if></c:forEach>];
+                    var data = [<c:forEach var="wr" items="${pet.weightRecords}" varStatus="s">${wr.weight}<c:if test="${!s.last}">,</c:if></c:forEach>];
+                    var ctx = document.getElementById('weightChart${pet.id}');
+                    if (ctx) {
+                        new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Weight (kg)',
+                                    data: data,
+                                    borderColor: 'rgb(75, 192, 192)',
+                                    tension: 0.1
+                                }]
+                            },
+                            options: {
+                                responsive: false,
+                                scales: { y: { beginAtZero: false } }
+                            }
+                        });
+                    }
+                })();
+            </c:if>
+        </c:forEach>
+    </script>
 
 </petclinic:layout>

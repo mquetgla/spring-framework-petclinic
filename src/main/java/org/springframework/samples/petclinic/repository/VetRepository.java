@@ -37,5 +37,6 @@ public interface VetRepository {
      */
     Collection<Vet> findAll();
 
+    Vet findById(int id);
 
 }

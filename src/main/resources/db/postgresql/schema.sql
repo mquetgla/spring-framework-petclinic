@@ -85,8 +85,23 @@ CREATE TABLE IF NOT EXISTS visits (
   pet_id INT NOT NULL,
   visit_date DATE,
   description VARCHAR(255),
+  vet_id INT,
   FOREIGN KEY (pet_id) REFERENCES pets(id),
+  FOREIGN KEY (vet_id) REFERENCES vets(id),
   CONSTRAINT pk_visits PRIMARY KEY (id)
 );
 
 ALTER SEQUENCE visits_id_seq RESTART WITH 100;
+
+CREATE TABLE IF NOT EXISTS weight_records (
+  id SERIAL,
+  weight DECIMAL(5,2) NOT NULL,
+  measure_date DATE NOT NULL,
+  pet_id INT NOT NULL,
+  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  CONSTRAINT pk_weight_records PRIMARY KEY (id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_weight_records_pet_id ON weight_records (pet_id);
+
+ALTER SEQUENCE weight_records_id_seq RESTART WITH 100;
