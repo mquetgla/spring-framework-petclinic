@@ -92,6 +92,8 @@ public class Pet extends NamedEntity {
 	@Column(name = "gender")
 	private Gender gender = Gender.UNKNOWN;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet", fetch = FetchType.EAGER)
+    private Set<WeightRecord> weightRecords;
 
     public void setBirthDate(LocalDate birthDate) {
         this.birthDate = birthDate;
@@ -201,6 +203,28 @@ public class Pet extends NamedEntity {
     public void addVisit(Visit visit) {
         getVisitsInternal().add(visit);
         visit.setPet(this);
+    }
+
+    protected Set<WeightRecord> getWeightRecordsInternal() {
+        if (this.weightRecords == null) {
+            this.weightRecords = new HashSet<>();
+        }
+        return this.weightRecords;
+    }
+
+    protected void setWeightRecordsInternal(Set<WeightRecord> weightRecords) {
+        this.weightRecords = weightRecords;
+    }
+
+    public List<WeightRecord> getWeightRecords() {
+        List<WeightRecord> sortedRecords = new ArrayList<>(getWeightRecordsInternal());
+        sortedRecords.sort(Comparator.comparing(WeightRecord::getMeasureDate));
+        return Collections.unmodifiableList(sortedRecords);
+    }
+
+    public void addWeightRecord(WeightRecord weightRecord) {
+        getWeightRecordsInternal().add(weightRecord);
+        weightRecord.setPet(this);
     }
 
 }

@@ -47,7 +47,14 @@ INSERT INTO pets (name, birth_date, type_id, owner_id, photo_url, microchip_id, 
 INSERT INTO pets (name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES ('Lucky', '2010-06-24', 2, 10, NULL, NULL, NULL, NULL, TRUE, 7.50, NULL, 'FEMALE');
 INSERT INTO pets (name, birth_date, type_id, owner_id, photo_url, microchip_id, color, breed, active, weight, notes, gender) VALUES ('Sly', '2012-06-08', 1, 10, NULL, NULL, NULL, NULL, TRUE, 3.50, NULL, 'MALE');
 
-INSERT INTO visits VALUES (default, 7, '2013-01-01', 'rabies shot');
-INSERT INTO visits VALUES (default, 8, '2013-01-02', 'rabies shot');
-INSERT INTO visits VALUES (default, 8, '2013-01-03', 'neutered');
-INSERT INTO visits VALUES (default, 7, '2013-01-04', 'spayed');
+INSERT INTO visits (pet_id, visit_date, description, vet_id) VALUES (7, '2013-01-01', 'rabies shot', 4);
+INSERT INTO visits (pet_id, visit_date, description, vet_id) VALUES (8, '2013-01-02', 'rabies shot', 2);
+INSERT INTO visits (pet_id, visit_date, description, vet_id) VALUES (8, '2013-01-03', 'neutered', 3);
+INSERT INTO visits (pet_id, visit_date, description, vet_id) VALUES (7, '2013-01-04', 'spayed', NULL);
+
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (4.20, '2012-09-07', 1);
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (4.35, '2013-03-07', 1);
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (4.50, '2013-09-07', 1);
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (7.80, '2012-04-17', 3);
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (8.00, '2012-10-17', 3);
+INSERT INTO weight_records (weight, measure_date, pet_id) VALUES (8.20, '2013-04-17', 3);

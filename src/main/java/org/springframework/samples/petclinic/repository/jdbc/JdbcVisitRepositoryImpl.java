@@ -72,7 +72,8 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
             .addValue("id", visit.getId())
             .addValue("visit_date", visit.getDate())
             .addValue("description", visit.getDescription())
-            .addValue("pet_id", visit.getPet().getId());
+            .addValue("pet_id", visit.getPet().getId())
+            .addValue("vet_id", visit.getVet() != null ? visit.getVet().getId() : null);
     }
 
     @Override
@@ -84,7 +85,7 @@ public class JdbcVisitRepositoryImpl implements VisitRepository {
             .single();
 
         List<Visit> visits = this.jdbcClient
-            .sql("SELECT id as visit_id, visit_date, description FROM visits WHERE pet_id=:id")
+            .sql("SELECT id as visit_id, visit_date, description, vet_id FROM visits WHERE pet_id=:id")
             .param("id", petId)
             .query(new JdbcVisitRowMapper())
             .list();

@@ -86,4 +86,14 @@ public class JdbcVetRepositoryImpl implements VetRepository {
         }
         return vets;
     }
+
+    @Override
+    public Vet findById(int id) {
+        return this.jdbcClient
+            .sql("SELECT id, first_name, last_name FROM vets WHERE id=:id")
+            .param("id", id)
+            .query(BeanPropertyRowMapper.newInstance(Vet.class))
+            .optional()
+            .orElse(null);
+    }
 }

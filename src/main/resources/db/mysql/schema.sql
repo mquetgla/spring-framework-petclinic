@@ -65,5 +65,16 @@ CREATE TABLE IF NOT EXISTS visits (
   pet_id INT(4) UNSIGNED NOT NULL,
   visit_date DATE,
   description VARCHAR(255),
-  FOREIGN KEY (pet_id) REFERENCES pets(id)
+  vet_id INT(4) UNSIGNED,
+  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  FOREIGN KEY (vet_id) REFERENCES vets(id)
+) engine=InnoDB;
+
+CREATE TABLE IF NOT EXISTS weight_records (
+  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  weight DECIMAL(5,2) NOT NULL,
+  measure_date DATE NOT NULL,
+  pet_id INT(4) UNSIGNED NOT NULL,
+  FOREIGN KEY (pet_id) REFERENCES pets(id),
+  INDEX(pet_id)
 ) engine=InnoDB;

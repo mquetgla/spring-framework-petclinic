@@ -15,11 +15,13 @@
  */
 package org.springframework.samples.petclinic.web;
 
+import java.util.Collection;
 import java.util.Map;
 
 import jakarta.validation.Valid;
 
 import org.springframework.samples.petclinic.model.Pet;
+import org.springframework.samples.petclinic.model.Vet;
 import org.springframework.samples.petclinic.model.Visit;
 import org.springframework.samples.petclinic.service.ClinicService;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,11 @@ public class VisitController {
 
     public VisitController(ClinicService clinicService) {
         this.clinicService = clinicService;
+    }
+
+    @ModelAttribute("vets")
+    public Collection<Vet> populateVets() {
+        return this.clinicService.findVets();
     }
 
     @InitBinder
@@ -73,9 +80,14 @@ public class VisitController {
 
     // Spring MVC calls method loadPetWithVisit(...) before processNewVisitForm is called
     @PostMapping(value = "/owners/{ownerId}/pets/{petId}/visits/new")
-    public String processNewVisitForm(@Valid Visit visit, BindingResult result) {
+    public String processNewVisitForm(@Valid Visit visit, BindingResult result,
+                                       @RequestParam(value = "vetId", required = false) Integer vetId) {
         if (result.hasErrors()) {
             return "pets/createOrUpdateVisitForm";
+        }
+
+        if (vetId != null) {
+            visit.setVet(this.clinicService.findVetById(vetId));
         }
 
         this.clinicService.saveVisit(visit);
