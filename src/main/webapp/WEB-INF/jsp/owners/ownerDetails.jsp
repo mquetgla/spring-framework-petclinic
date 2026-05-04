@@ -136,6 +136,13 @@
                                 </spring:url>
                                 <a href="${fn:escapeXml(weightUrl)}">Add Weight Record</a>
                             </td>
+                            <td>
+                                <spring:url value="/owners/{ownerId}/pets/{petId}/transfer" var="transferUrl">
+                                    <spring:param name="ownerId" value="${owner.id}"/>
+                                    <spring:param name="petId" value="${pet.id}"/>
+                                </spring:url>
+                                <a href="${fn:escapeXml(transferUrl)}">Transfer Pet</a>
+                            </td>
                         </tr>
                     </table>
 

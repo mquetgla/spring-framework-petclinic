@@ -108,4 +108,56 @@ public class PetController {
         return "redirect:/owners/{ownerId}";
     }
 
+    @GetMapping("/pets/{petId}/transfer")
+    public String initTransferPetForm(@PathVariable("petId") int petId, Owner owner, ModelMap model) {
+        Pet pet = this.clinicService.findPetById(petId);
+        model.put("pet", pet);
+        return "pets/transferPetForm";
+    }
+
+    @GetMapping("/pets/{petId}/transfer/search")
+    public String searchOwnersForTransfer(@PathVariable("petId") int petId, @RequestParam(value = "lastName", required = false) String lastName, ModelMap model) {
+        Pet pet = this.clinicService.findPetById(petId);
+        model.put("pet", pet);
+        if (StringUtils.hasText(lastName)) {
+            Collection<Owner> results = this.clinicService.findOwnerByLastName(lastName);
+            model.put("results", results);
+        }
+        return "pets/transferPetForm";
+    }
+
+    @PostMapping("/pets/{petId}/transfer")
+    public String processPetTransfer(@PathVariable("petId") int petId, @RequestParam("newOwnerId") int newOwnerId,
+                                    @RequestParam(value = "confirm", required = false) String confirm,
+                                    Owner owner, ModelMap model) {
+        Pet pet = this.clinicService.findPetById(petId);
+        Owner newOwner = this.clinicService.findOwnerById(newOwnerId);
+
+        if (newOwner == null) {
+            model.put("pet", pet);
+            model.put("errorMessage", "Selected owner does not exist.");
+            return "pets/transferPetForm";
+        }
+
+        if (pet.getOwner().getId() == newOwnerId) {
+            model.put("pet", pet);
+            model.put("errorMessage", "Cannot transfer pet to the same owner.");
+            return "pets/transferPetForm";
+        }
+
+        if (confirm == null || !confirm.equals("true")) {
+            model.put("pet", pet);
+            model.put("newOwner", newOwner);
+            model.put("showConfirmation", true);
+            return "pets/transferPetForm";
+        }
+
+        this.clinicService.transferPetToOwner(petId, newOwnerId);
+        pet = this.clinicService.findPetById(petId);
+        model.put("pet", pet);
+        model.put("newOwner", newOwner);
+        model.put("successMessage", "Pet ownership has been successfully transferred.");
+        return "pets/transferPetSuccess";
+    }
+
 }

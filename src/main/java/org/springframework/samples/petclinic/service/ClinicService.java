@@ -54,6 +54,8 @@ public interface ClinicService {
 
     void saveWeightRecord(WeightRecord weightRecord);
 
+    void transferPetToOwner(int petId, int newOwnerId);
+
     Vet findVetById(int id);
 
 }

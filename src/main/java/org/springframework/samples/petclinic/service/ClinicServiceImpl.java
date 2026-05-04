@@ -64,7 +64,11 @@ public class ClinicServiceImpl implements ClinicService {
     @Override
     @Transactional(readOnly = true)
     public Owner findOwnerById(int id) {
-        return ownerRepository.findById(id);
+        Owner owner = ownerRepository.findById(id);
+        if (owner == null) {
+            throw new IllegalArgumentException("Owner not found with id: " + id);
+        }
+        return owner;
     }
 
     @Override
@@ -121,6 +125,21 @@ public class ClinicServiceImpl implements ClinicService {
     @Transactional
     public void saveWeightRecord(WeightRecord weightRecord) {
         weightRecordRepository.save(weightRecord);
+    }
+
+    @Override
+    @Transactional
+    public void transferPetToOwner(int petId, int newOwnerId) {
+        Pet pet = findPetById(petId);
+        if (pet == null) {
+            throw new IllegalArgumentException("Pet not found with id: " + petId);
+        }
+        Owner newOwner = findOwnerById(newOwnerId);
+        if (newOwner == null) {
+            throw new IllegalArgumentException("Owner not found with id: " + newOwnerId);
+        }
+        pet.setOwner(newOwner);
+        savePet(pet);
     }
 
     @Override
