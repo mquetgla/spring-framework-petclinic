@@ -47,7 +47,6 @@
                                 <option value="${v.id}"><c:out value="${v.firstName} ${v.lastName}"/></option>
                             </c:forEach>
                         </select>
-                        </form:select>
                     </div>
                 </div>
             </div>
